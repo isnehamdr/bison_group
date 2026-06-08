@@ -59,12 +59,12 @@ const About = () => {
   })
 
   return (
-    <section ref={ref} className="w-full bg-white py-16 sm:py-24 px-4 sm:px-0">
-      <div className="sm:max-w-7xl mx-auto px-4 ">
+    <section ref={ref} className="w-full  py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
 
         {/* ── Header ── */}
-        <div className="flex flex-col items-center text-center mb-10 sm:mb-14 gap-3">
-          <div style={fadeUp(0)} className="flex items-center gap-1.5 text-gray-500 text-sm font-medium">
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-16 gap-3">
+          <div style={fadeUp(0)} className="flex items-center gap-1.5 text-gray-500 text-sm font-medium uppercase tracking-wider">
             <svg width="16" height="16" viewBox="0 0 28 28" fill="none">
               <rect x="2" y="2" width="11" height="11" rx="2" fill="#888"/>
               <rect x="15" y="2" width="11" height="11" rx="2" fill="#888"/>
@@ -75,52 +75,54 @@ const About = () => {
           </div>
 
           <h2 style={fadeUp(0.1)} className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
-            Who We Are. Learn About us
+            Who We Are. Learn About Us
           </h2>
 
-          <p style={fadeUp(0.18)} className="text-gray-500 text-base sm:text-lg max-w-lg leading-relaxed">
+          <p style={fadeUp(0.18)} className="text-gray-500 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto">
             We are a dynamic team of innovators, storytellers, and visionaries dedicated to transforming ideas into extraordinary experiences.
           </p>
         </div>
 
         {/* ── Body: image + stats ── */}
-        <div className="flex flex-col md:flex-row items-start gap-8 md:gap-10">
+        <div className="flex flex-col md:flex-row md:items-stretch gap-8 md:gap-12">
 
-          {/* Image with notch shape */}
-          <div style={fadeUp(0.22)} className="w-full md:w-[52%] shrink-0">
+          {/* Left: Image with notch shape */}
+          <div style={fadeUp(0.22)} className="w-full md:w-1/2">
             <div
-              className="relative overflow-hidden shadow-md"
-              style={{
-                borderRadius: '4px 80px 4px 80px',
-                aspectRatio: '4/5',
-              }}
+              className="relative overflow-hidden  w-full aspect-[4/5] md:aspect-auto md:h-full min-h-[400px] md:min-h-[480px]"
+              // style={{
+              //   borderRadius: '4px 80px 4px 80px',
+              // }}
             >
               <img
                 src="/images/about.png"
                 alt="Team member"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
 
           {/* Right: stats grid + CTA */}
-          <div className="flex-1 flex flex-col gap-6">
+          <div className="w-full md:w-1/2 flex flex-col justify-center gap-6 md:gap-8">
 
-            {/* Stats grid */}
-            <div style={fadeUp(0.3)} className="bg-gray-50 rounded-2xl p-5 sm:p-6 grid grid-cols-2 gap-x-4 gap-y-6">
+            {/* Stats grid: Now individual distinct boxes */}
+            <div style={fadeUp(0.3)} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {stats.map(({ icon, value, desc }, i) => (
                 <div
                   key={i}
-                  className="flex flex-col gap-2"
+                  className="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow duration-300"
                   style={{
                     opacity: visible ? 1 : 0,
                     transform: visible ? 'translateY(0)' : 'translateY(20px)',
                     transition: `opacity 0.55s ease ${0.38 + i * 0.08}s, transform 0.55s ease ${0.38 + i * 0.08}s`,
                   }}
                 >
-                  <div className="text-gray-500">{icon}</div>
+                  {/* Icon wrapped in its own subtle container */}
+                  <div className="text-gray-600 bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm">
+                    {icon}
+                  </div>
                   <p className="text-3xl sm:text-4xl font-bold text-gray-900 leading-none">{value}</p>
-                  <p className="text-sm text-gray-500 leading-snug">{desc}</p>
+                  <p className="text-sm text-gray-500 leading-snug font-medium">{desc}</p>
                 </div>
               ))}
             </div>
@@ -135,14 +137,14 @@ const About = () => {
 
               {/* Phone */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <div className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center shrink-0 bg-white shadow-sm">
+                  <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
                   </svg>
                 </div>
                 <div>
-                  <p className="text-[11px] text-gray-400 leading-none">Get free Qoute</p>
-                  <p className="text-[15px] font-bold text-gray-900 leading-tight">22 (00) 356 7890</p>
+                  <p className="text-xs text-gray-400 leading-none mb-1 uppercase tracking-wide">Get a Free Quote</p>
+                  <p className="text-base font-bold text-gray-900 leading-tight">22 (00) 356 7890</p>
                 </div>
               </div>
             </div>
